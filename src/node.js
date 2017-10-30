@@ -37,7 +37,7 @@ class Node {
 	}
 
 	swapWithParent() {
-		if (this.) {
+		if (this) {
 			
 		}
 	}
