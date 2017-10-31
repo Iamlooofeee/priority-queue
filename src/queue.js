@@ -32,17 +32,6 @@ class PriorityQueue {
 		this.heap.pop();
 
 
-		for (var i = 0; i < this.count; i++) {
-			for (var j = i++; j < i; j++) {
-				if (this.expectedData[i] >= this.expectedData[j]) {
-					this.maxCountForEach = this.expectedData[i];
-				} else {
-					this.maxCountForEach = this.expectedData[j];
-				}
-			}
-		}
-
-
 		return this.data;
 	}
 
