@@ -7,7 +7,9 @@ class MaxHeap {
 	}
 
 	push(data, priority) {
-		this.insertNode = new Node(data, priority);
+		var node = new Node(data, priority);
+		this.insertNode(node);
+		this.shiftNodeUp(node);
 	}
 
 	pop() {
@@ -23,7 +25,7 @@ class MaxHeap {
 	}
 
 	size() {
-		
+		return 
 	}
 
 	isEmpty() {
@@ -31,11 +33,14 @@ class MaxHeap {
 	}
 
 	clear() {
-		
+		this.root = null;
+		this.parentNodes = [];
 	}
 
 	insertNode(node) {
-		
+		if (!(this.isEmpty())) {
+			
+		}
 	}
 
 	shiftNodeUp(node) {
