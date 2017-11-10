@@ -40,7 +40,10 @@ class PriorityQueue {
 	}
 
 	isEmpty() {
-		
+		if (this.data === undefined && this.priority === undefined) {
+			return true;
+		} 
+		return false;
 	}
 }
 

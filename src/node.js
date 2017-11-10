@@ -37,10 +37,61 @@ class Node {
 	}
 
 	swapWithParent() {
-		if (this) {
-			
-		}
+	if (this.parent === null) {
+		return;
 	}
+	var parent = this.parent,
+		parentOfParent = this.parent.parent,		
+		left = this.left,
+		right = this.right,		
+		parentSA = null,
+		parentSB = null;
+	
+	if (parentOfParent !== null) {
+	     parentOfParent.removeChild(parent);
+		 parentOfParent.appendChild(this);		 
+	}
+	if(parent !== null) {
+	    if(parent.left === this) {
+	    	parent.left = null;
+	    }
+
+		else if (parent.right === this) {
+			parent.right = null;
+		}
+		
+		if(parentOfParent === null) {
+			this.parent = null;
+		}
+		  
+
+		if(parent.left !== null) {
+			parentSA = parent.left; 
+			parent.left = null;}
+
+			else if(parent.right !== null) {
+				parentSB = parent.right;
+				parent.right = null;
+			}
+
+			if(left !== null) {
+				this.removeChild(left);
+				parent.appendChild(left);
+			}
+			if(right !== null) {
+				this.removeChild(right);
+				parent.appendChild(right);
+			}
+			this.appendChild(parent);
+			if(parentSA !== null) {
+				this.appendChild(parentSA);
+			}
+			if(parentSB !== null) {
+				this.appendChild(parentSB);
+			}
+			}
+
+	} 
 }
 
 module.exports = Node;
