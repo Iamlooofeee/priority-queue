@@ -12,6 +12,7 @@ class PriorityQueue {
 
 		this.countForEach = 0;
 		this.maxCountForEach = 0;
+		this.maxHeap = new MaxHeap();
 	}
 
 	push(data, priority) {
@@ -30,20 +31,19 @@ class PriorityQueue {
 			throw new Error;
 		}
 		this.heap.pop();
-
-
+		this.count--;
 		return this.data;
 	}
 
 	size() {
-		
+		return this.count
 	}
 
 	isEmpty() {
-		if (this.data === undefined && this.priority === undefined) {
-			return true;
+		if (this.count !== 0) {
+			return false;
 		} 
-		return false;
+		return true;
 	}
 }
 
