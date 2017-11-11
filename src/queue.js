@@ -36,7 +36,7 @@ class PriorityQueue {
 	}
 
 	size() {
-		return this.count
+		return this.count;
 	}
 
 	isEmpty() {

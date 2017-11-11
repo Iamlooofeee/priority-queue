@@ -15,38 +15,57 @@ class MaxHeap {
 	}
 
 	pop() {
-		if (this.isEmpty()) {
+		if(this.root === null) {
 			return;
 		}
-		let fakeDetachedNode = this.detachRoot();
-		this.restoreRootFromLastInsertedNode(fakeDetachedNode);
-		this.shiftNodeDown(this.rootcopy);
+		let detached = this.detachRoot();
+		this.restoreRootFromLastInsertedNode(detached);
+		this.shiftNodeDown(this.root);
 		this.count--;
-		return fakeDetachedNode.data;
+		return root.data;
 	}
 
 	detachRoot() {
-		this.rootcopy = this.root;
+		let root = this.root;
 		let rootIndex = this.parentNodes.indexOf(root);
 		if (rootIndex >= 0) {
 		  this.parentNodes.splice(rootIndex, 1);
 		}
-		return this.rootcopy;
+		this.root = null;
+		return root;
 
 	}
 
 	restoreRootFromLastInsertedNode(detached) {
-		
+		if (this.parentNodes.length > 1) {
+			let lastInsertedNode = this.parentNodes[this.parentNodes.length - 1];
+			this.parentNodes.pop();
+			this.root = lastInsertedNode;
+			if (lastInsertedNode.parent === detached) {
+				this.parentNodes.unshift(lastInsertedNode);
+			}
+			if (detached.left !== lastInsertedNode) {
+				lastInsertedNode.appendChild(detached.left);
+			}
+			if (detached.right !== lastInsertedNode) {
+				lastInsertedNode.appendChild(detached.right);
+			}			
+		}
+		if (this.parentNodes.length === 1) {
+			let lastInsertedNode = this.parentNodes[0];
+			this.root = lastInsertedNode;
+			this.parentNodes.pop();
+		}
 	}
 
 	size() {
-			return this.count;
+		return this.count;
 	}
 
 	isEmpty() {
 		if (this.parentNodes.length === 0) {
 			return true;
-		}
+		} 
 		return false;
 	}
 
