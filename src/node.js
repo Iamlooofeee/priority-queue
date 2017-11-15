@@ -9,13 +9,16 @@ class Node {
 	}
 
 	appendChild(node) {
-		if (this.left === null) {
-			this.left = node;
-			node.parent = this;
-		} else if (this.right === null) {
-			this.right = node;
-			node.parent = this;
-		} 
+		if (node === null) {
+			return;
+		}
+		if (this.left == null) {
+		this.left = node;
+		node.parent = this;
+		} else if (this.right == null) {
+		this.right = node;
+		node.parent = this;
+		}
 	}
 
 	removeChild(node) {

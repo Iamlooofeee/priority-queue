@@ -30,9 +30,8 @@ class PriorityQueue {
 		if (this.count === 0) {
 			throw new Error;
 		}
-		this.heap.pop();
 		this.count--;
-		return this.data;
+		return this.heap.pop();
 	}
 
 	size() {
